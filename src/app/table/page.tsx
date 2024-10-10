@@ -1,46 +1,44 @@
 'use client'; // Marking as a client component
-
-import { useState } from "react";
+import React, { useState } from 'react';
 import Link from "next/link";
 
-// Define Contact type
+
 interface Contact {
   id: number;
   name: string;
   phoneNumber: string;
 }
 
-// Static array of contacts
+
 const contactsData: Contact[] = [
   { id: 1, name: 'John Doe', phoneNumber: '123-456-7890' },
   { id: 2, name: 'Jane Smith', phoneNumber: '987-654-3210' },
 ];
 
 const Table = () => {
-  const [contacts, setContacts] = useState(contactsData); // Contact list state
-  const [searchTerm, setSearchTerm] = useState(""); // Search term state
+  const [contacts, setContacts] = useState(contactsData); 
+  const [searchTerm, setSearchTerm] = useState(""); 
 
-  // Handle contact updates
+
   const updateContact = (id: number) => {
     alert(`Update contact with ID: ${id}`);
   };
 
-  // Handle contact deletion
   const deleteContact = (id: number) => {
     alert(`Delete contact with ID: ${id}`);
   };
 
-  // Handle adding a new contact
+
   const addContact = () => {
     alert('Add new contact');
   };
 
-  // Handle search functionality
+
   const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value.toLowerCase();
     setSearchTerm(value);
 
-    // Filter contacts based on search term
+   
     const filteredContacts = contactsData.filter(
       (contact) =>
         contact.name.toLowerCase().includes(value) ||
